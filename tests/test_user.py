@@ -21,7 +21,7 @@ def test_get_products(self):
         login_=login(self.tester)
         result = json.loads(login_.data.decode())
         
-        self.tester.post('/api/v1/products/', content_type='application/json',
+        self.tester.post('/api/v1/product/', content_type='application/json',
                                    data =json.dumps( dict(name='caps',
                                                         price =23000)),
                          headers =dict(access_token = result['token']))
@@ -29,10 +29,10 @@ def test_get_products(self):
                                    data =json.dumps( dict(name='jeans',
                                                         price=1500)),
                          headers =dict(access_token = result['token']))
-        self.tester.post('/api/v1/products/2',
+        self.tester.post('/api/v1/product/2',
                          headers =dict(access_token = result['token']))
         self.tester.post('/api/v1/products/1',
                          headers =dict(access_token = result['token']))
-        response=self.tester.get('/api/v1/products/',
+        response=self.tester.get('/api/v1/product/',
                                  headers =dict(access_token = result['token']))
         self.assertIn(u'jeans', response.data)

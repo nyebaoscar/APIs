@@ -14,8 +14,8 @@ products = [
 ]
 
 class Products(Resource):
-    @app.route('/',methods= ['GET'])
+    @app.route('/api/v1/product/',methods= ['GET'])
     def get(self, name):
-        return make_response(jsonify({"message":"Successfully added to menu"}),201)
+        return make_response(jsonify({"message":"Successfully added to productss"}),201)
     
     
