@@ -3,7 +3,6 @@ import json
 
 class TestUserApi(unittest.TestCase):
     def setUp(self):
-        self.tester = APP.test_client(self)
 
         def test_successful_signup(self):
 

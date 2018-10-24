@@ -15,7 +15,7 @@ users = [
  },
   {"name":"jonnas",
     "email": "jonnsa@gmail.com",
-   git"password" :"attendant",
+   "password" :"attendant",
   },
 
 
