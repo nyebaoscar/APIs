@@ -1,6 +1,6 @@
 
 from flask import Flask,jsonify,request,make_response
-from flask_restful import Resource
+from flask_restful import Resource,Api
 
 app= Flask(__name__)
 
@@ -19,7 +19,7 @@ class Product(Resource):
     def get(self, name):
         return make_response(jsonify({"message":"Successfully added to productss"}),201),
         
-    @app.route('/api/v1/product/',methods= ['GET'])
+    @app.route('/api/v1/product/id/',methods= ['GET'])
     def get_products(self,public_id,product):
         product = product.query.filter_by(public_id=public_id).first()
 
@@ -27,7 +27,7 @@ class Product(Resource):
             return jsonify({'message':'no product found'})
 
 class sales(Resource):
-    @app.route('/api/v1/product/',methods= ['GET'])
+    @app.route('/api/v1/sales/',methods= ['GET'])
     def get_all_sales(self,sale,Sale):
         sale=Sale.get_sales()
         return jsonify(sales)
@@ -44,8 +44,8 @@ class sales(Resource):
             return make_response(jsonify({'sale':sale}),201)
 
 class Get_sale_id(Resource):
-    @app.route('/api/v1/product/',methods=['GET'])
-    def get(self,sale_id,sales):
+    @app.route('/api/v1/slaes/id/',methods=['GET'])
+    def get_sales_by_id(self,sale_id,sales):
         sal = [sale for sale in sales if sale['sale_id'] == sale_id] or None
         if sal:
             return make_response(jsonify({'sale':sal[0]}),200)
