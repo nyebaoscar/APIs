@@ -1,8 +1,8 @@
-import flask
+
 from flask import Flask,jsonify,request,make_response
 from flask_restful import Resource
 
-app=flask.Flask(__name__)
+app= Flask(__name__)
 
 products = [
     {"name": "caps",
@@ -54,6 +54,10 @@ class Get_sale_id(Resource):
             
 
         return 404
+
+if __name__=="__main__":
+    app.run(debug=True)
+
 
 
         

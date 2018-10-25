@@ -35,7 +35,7 @@ def test_get_products(self):
         response=self.tester.get('/api/v1/product/',
                                  headers =dict(access_token = result['token']))
         self.assertIn(u'jeans', response.data)
-class TestSales(unittest.TestCase):
+class TestSales(TestProducts):
     def test_get_all_sales(self,result):
         """test that admin can view all sales"""
         self.tester.post('/api/v1/sales/2',
