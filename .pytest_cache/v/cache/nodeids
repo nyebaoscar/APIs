@@ -1,1 +1,4 @@
-[]
+[
+  "tests/test_user.py::test_get_products", 
+  "tests/test_user.py::TestSales::test_get_all_sales"
+]

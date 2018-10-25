@@ -31,7 +31,7 @@ class sales(Resource):
     def get_all_sales(self,sale,Sale):
         sale=Sale.get_sales()
         return jsonify(sales)
-    def post(self,product_name,price,total_sale,quantity,sale_id):
+    def post(self,product_name,price,total_sale,quantity,sale_id,sale,Sale):
         sale_id=len(sales)+1
         product_name=request.json.get('product_name')
         price =request.json.get('price')
@@ -43,8 +43,17 @@ class sales(Resource):
             sale = Sale(sale_id,product_name,price,total_sale,quantity).create_sale()
             return make_response(jsonify({'sale':sale}),201)
 
-    
+class Get_sale_id(Resource):
+    @app.route('/api/v1/product/',methods=['GET'])
+    def get(self,sale_id,sales):
+        sal = [sale for sale in sales if sale['sale_id'] == sale_id] or None
+        if sal:
+            return make_response(jsonify({'sale':sal[0]}),200)
+        else:
+            return jsonify({'message': "specific sale not found"})
+            
 
+        return 404
 
 
         
