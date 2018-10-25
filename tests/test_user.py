@@ -1,6 +1,6 @@
 import unittest
 import json 
-from app import APP
+from api import app
 
 def login(tester):
     tester.post('api/v1/auth/signup',content_type='application/json',
@@ -36,3 +36,14 @@ def test_get_products(self):
         response=self.tester.get('/api/v1/product/',
                                  headers =dict(access_token = result['token']))
         self.assertIn(u'jeans', response.data)
+class TestSales(unittest.TestCase):
+    def test_get_all_sales(self):
+        """test that admin can view all sales"""
+        #sales 
+        self.tester.post('/api/v1/sales/2',
+                                  headers =dict(access_token = result['token']))
+        
+        responsev=self.tester.get('/api/v1/sales',
+                                  headers =dict(access_token = result['token']))
+
+        self.assertIn(u"jeanss", responsev.data)
